@@ -10,7 +10,7 @@ function Navbar() {
     const logout = async () => {
         try {
             localStorage.clear()
-            router.push('/')
+            location.href = '/'
         } catch (e) {
             alert(e)
         }
@@ -22,7 +22,7 @@ function Navbar() {
                 <nav className="shadow-sm fixed w-full z-10">
                     <div className="w-full bg-sky-900">
                         <div className="flex items-center h-20 w-full">
-                            <div className="flex items items-center mx-60 justify-between w-full">
+                            <div className="flex items items-center mx-40 justify-between w-full">
                                 <div className="flex justify-center items-center flex-shrink-0">
                                     <h1 className="font-bold text-xl text-blue-500 cursor-pointer">
                                         QAStream
@@ -30,16 +30,16 @@ function Navbar() {
                                 </div>
                                 <div className="ml-10 flex items-baseline space-x-4">
 
-                                    <a onClick={() => router.push('/homepage')} className="font-semibold text-blue-500 px-7 py-2 text-md hover:font-black ">
+                                    <a onClick={() => router.push('/homepage')} className="font-semibold text-blue-500 px-7 py-2 text-md hover:font-black cursor-pointer">
                                         Home
                                     </a>
-                                    <a onClick={() => router.push('/about')} className="font-semibold text-blue-500 px-9 py-2 text-md hover:font-black ">
+                                    <a onClick={() => router.push('/about')} className="font-semibold text-blue-500 px-9 py-2 text-md hover:font-black cursor-pointer">
                                         About
                                     </a>
-                                    <a onClick={() => router.push('/profile')} className="font-semibold text-blue-500 px-5 py-2 text-md hover:font-black ">
+                                    <a onClick={() => router.push('/profile')} className="font-semibold text-blue-500 px-5 py-2 text-md hover:font-black cursor-pointer">
                                         Profile
                                     </a>
-                                    <a onClick={() => router.push('/searchpage')} className="font-semibold text-blue-500 px-5 py-2 text-md hover:font-black ">
+                                    <a onClick={() => router.push('/searchpage')} className="font-semibold text-blue-500 px-5 py-2 text-md hover:font-black cursor-pointer">
                                         Search
                                     </a>
                                     {/* <Search /> */}

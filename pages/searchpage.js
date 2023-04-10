@@ -8,12 +8,8 @@ function SearchPage() {
     const router = useRouter()
     useEffect(() => {
         let __email = localStorage.getItem('user_mail')
-        if (__email != undefined) {
-            router.reload
-            return
-        }
-        else {
-            router.replace('/')
+        if (__email == undefined) {
+            router.back()
             return
         }
     }, [])

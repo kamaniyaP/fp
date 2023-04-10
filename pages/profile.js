@@ -24,7 +24,6 @@ function Profile() {
     useEffect(() => {
         let __email = localStorage.getItem('user_mail')
         if (__email != undefined) {
-            router.reload
             setId(localStorage.getItem('user_id'))
             setName(localStorage.getItem('user_name'))
             setEmail(__email)
@@ -32,7 +31,7 @@ function Profile() {
                 setRating(localStorage.getItem('user_rating'))
             }
         } else {
-            router.replace('/')
+            router.back()
             return
         }
 

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model answers {
+  submission_time String      @db.VarChar(30)
+  user_id         String      @db.VarChar(64)
+  answer          String?
+  solutions       solutions[]
+
+  @@id([submission_time, user_id])
+  @@unique([user_id, submission_time])
+}
+
+model questions {
+  submission_time String      @db.VarChar(30)
+  user_id         String      @db.VarChar(64)
+  question        String?
+  solutions       solutions[]
+
+  @@id([submission_time, user_id])
+  @@unique([user_id, submission_time])
+}
+
+model solutions {
+  q_sub_time String    @db.VarChar(30)
+  q_user_id  String    @db.VarChar(64)
+  a_sub_time String    @db.VarChar(30)
+  a_user_id  String    @db.VarChar(64)
+  answers    answers   @relation(fields: [a_sub_time, a_user_id], references: [submission_time, user_id], onDelete: NoAction, onUpdate: NoAction)
+  questions  questions @relation(fields: [q_sub_time, q_user_id], references: [submission_time, user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([q_sub_time, q_user_id, a_sub_time, a_user_id])
+}
+
+model users {
+  user_id       String  @id @db.VarChar(64)
+  user_name     String? @db.VarChar(256)
+  user_mail     String? @unique @db.VarChar(256)
+  user_password String? @db.VarChar(256)
+  user_rating   Int?
+}

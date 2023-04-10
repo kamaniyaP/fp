@@ -21,11 +21,15 @@ const Search = () => {
         clickPoint.current.style.display = "block";
     };
     const handleSearch = () => {
-        setShow(true)
-        postData('/api/search', query).then(data => {
-            setResults(data.data)
-            console.log(data)
-        })
+        if (query.value) {
+            setShow(true)
+            postData('/api/search', query).then(data => {
+                setResults(data.data)
+                console.log(data)
+            })
+        } else {
+            setShow(false)
+        }
         //router.push({ path: '/searchpage.js', query: { results } })
     }
     const handleChange = (event) => {
@@ -38,8 +42,8 @@ const Search = () => {
     return (
         <div>
             <div className="flex text-justify justify-center">
-                <div className="bg-white rounded-2xl shadow-2xl m-20">
-                    <div className="flex items-center justify-center mt-10 ml-60 mr-64">
+                <div className="flex flex-col bg-white rounded-2xl shadow-2xl m-20">
+                    <div className="flex items-center space-x-2 justify-center ml-60 mr-64 md-10">
                         <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
                             <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         </div>
@@ -53,8 +57,8 @@ const Search = () => {
                             value={query.value}
                             onChange={handleChange}></input>
                         <button onClick={handleSearch}>Search</button>
-                        <QuestionsList questions={results} isVisible={show} />
                     </div>
+                    <QuestionsList questions={results} isVisible={show} />
                 </div>
             </div>
         </div>

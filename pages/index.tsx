@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     let __email = localStorage.getItem('user_mail')
     if (__email != undefined) {
-      router.back()
+      router.push('/homepage')
       return
     }
   }, [])

@@ -24,7 +24,7 @@ function Navbar() {
                         <div className="flex items-center h-20 w-full">
                             <div className="flex items items-center mx-40 justify-between w-full">
                                 <div className="flex justify-center items-center flex-shrink-0">
-                                    <h1 className="font-bold text-xl text-blue-500 cursor-pointer">
+                                    <h1 className="font-bold text-xl text-blue-500 cursor-pointer" onClick={() => router.push('/homepage')}>
                                         QAStream
                                     </h1>
                                 </div>
@@ -42,7 +42,6 @@ function Navbar() {
                                     <a onClick={() => router.push('/searchpage')} className="font-semibold text-blue-500 px-5 py-2 text-md hover:font-black cursor-pointer">
                                         Search
                                     </a>
-                                    {/* <Search /> */}
                                     <div className="px-10">
                                         <button className="border-2 border-blue-500  text-blue-500 rounded-full  px-12 py-2 inline-block font-semibold hover:bg-blue-500 hover:text-white"
                                             onClick={() =>
